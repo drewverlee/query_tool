@@ -1,0 +1,38 @@
+Run options: --seed 40587
+
+# Running:
+
+..FFF
+
+Finished in 0.017223s, 290.3013 runs/s, 290.3013 assertions/s.
+
+  1) Failure:
+TestMeme#test_qt_when_lower_and_upper_inputs_arent_specified [test_brad_qt.rb:88]:
+--- expected
++++ actual
+@@ -1 +1 @@
+-[{:value=>0, :ord=>"/building/awesome"}, {:value=>1, :ord=>"/building/awesome"}, {:value=>3, :ord=>"/building/awesome"}, {:value=>4, :ord=>"/building/awesome"}]
++[{:value=>0.0, :ord=>"/building/awesome"}]
+
+
+
+  2) Failure:
+TestMeme#test_qt_filters_by_lower_and_upper [test_brad_qt.rb:69]:
+--- expected
++++ actual
+@@ -1 +1 @@
+-[{:value=>1, :ord=>"/building/awesome"}, {:value=>3, :ord=>"/building/awesome"}]
++[{:value=>0.0, :ord=>"/building/awesome"}, {:value=>1.0, :ord=>"/building/awesome"}, {:value=>3.0, :ord=>"/building/awesome"}, {:value=>4.0, :ord=>"/building/awesome"}]
+
+
+
+  3) Failure:
+TestMeme#test_qt_when_search_isnt_specified [test_brad_qt.rb:107]:
+--- expected
++++ actual
+@@ -1 +1 @@
+-[{:value=>1, :ord=>"/building/awesome"}, {:value=>2, :ord=>"/building/sucks"}, {:value=>3, :ord=>"/building/awesome"}]
++[]
+
+
+5 runs, 5 assertions, 3 failures, 0 errors, 0 skips
