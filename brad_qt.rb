@@ -1,40 +1,38 @@
 class BradQT  
 
-  def qt(a, l: -Float::INFINITY, u: Float::INFINITY, s: "")
+  def qt(a, l:nil, u: nil, s: nil)
 
 
-    if search.present?
+    if !s.nil?
 
-      @points = @customer.raw_points
 
-      # Turn all @points[:value] attributes to floats in memory to search against.
+      # Turn all a[:value] attributes to floats in memory to search against.
       # The db has them stored as strings. Tsk tsk. (-_-)
       points_array = []
-      @points.each do |p|
-        p_as_hash = p.attributes
-        p_as_hash[:value] = p[:value].to_f
-        points_array << p_as_hash
+      a.each do |p|
+        p[:value] = p[:value].to_f
+        points_array << p
       end
 
       @result = []
       points_array.each do |pa|
 
         # Check that the ord contains the current search term. No nulls in the values either.
-        if pa['value'].present? && pa['ord'].include?(search)
+        if pa['value'].nil? && pa[:ord].include?(s)
 
           # We already have the customers raw_points serialized and saved in memory.
           # No need to hit the db with queries.
           case
-          when u.present? && l.present?
+          when u.nil? && l.nil?
             # Convert to floats for range check.
             if pa[:value].between?(l.to_f, u.to_f)
               @result << pa
             end
-          when u.present? && l.blank?
+          when u.nil? && l.blank?
             if pa[:value] < u.to_f
               @result << pa
             end
-          when u.blank? && l.present?
+          when u.nil? && l.nil?
             if pa[:value] > l.to_f
               @result << pa
             end

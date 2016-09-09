@@ -1,10 +1,9 @@
 require "minitest/autorun"
-require_relative 'qt'
-# require_relative 'brad_qt'
+require_relative 'brad_qt'
 
 class TestMeme < Minitest::Test
   def setup
-    @qt = QT.new
+    @qt = BradQT.new
   end
 
   def test_qt_should_return_args_between_upper_and_lower_containing_search  
@@ -16,11 +15,11 @@ class TestMeme < Minitest::Test
       {value: "4", ord: "/building/awesome"}
     ]
     expected = [
-      {value: "0", ord: "/building/awesome"}, 
-      {value: "1", ord: "/building/awesome"}, 
-      {value: "2", ord: "/building/awesome"}, 
-      {value: "3", ord: "/building/awesome"}, 
-      {value: "4", ord: "/building/awesome"}
+      {value: 0, ord: "/building/awesome"}, 
+      {value: 1, ord: "/building/awesome"}, 
+      {value: 2, ord: "/building/awesome"}, 
+      {value: 3, ord: "/building/awesome"}, 
+      {value: 4, ord: "/building/awesome"}
     ]
     lower = 0
     upper = 4
@@ -39,10 +38,10 @@ class TestMeme < Minitest::Test
       {value: "4", ord: "/building/awesome"}
     ]
     expected = [
-      {value: "0", ord: "/building/awesome"}, 
-      {value: "1", ord: "/building/awesome"}, 
-      {value: "3", ord: "/building/awesome"}, 
-      {value: "4", ord: "/building/awesome"}
+      {value: 0, ord: "/building/awesome"}, 
+      {value: 1, ord: "/building/awesome"}, 
+      {value: 3, ord: "/building/awesome"}, 
+      {value: 4, ord: "/building/awesome"}
     ]
     lower = 0
     upper = 4
@@ -60,8 +59,8 @@ class TestMeme < Minitest::Test
       {value: "4", ord: "/building/awesome"}
     ]
     expected = [
-      {value: "1", ord: "/building/awesome"}, 
-      {value: "3", ord: "/building/awesome"}
+      {value: 1, ord: "/building/awesome"}, 
+      {value: 3, ord: "/building/awesome"}
     ]
     lower = 1
     upper = 3
@@ -79,10 +78,10 @@ class TestMeme < Minitest::Test
       {value: "4", ord: "/building/awesome"}
     ]
     expected = [
-      {value: "0", ord: "/building/awesome"}, 
-      {value: "1", ord: "/building/awesome"}, 
-      {value: "3", ord: "/building/awesome"},
-      {value: "4", ord: "/building/awesome"}
+      {value: 0, ord: "/building/awesome"}, 
+      {value: 1, ord: "/building/awesome"}, 
+      {value: 3, ord: "/building/awesome"},
+      {value: 4, ord: "/building/awesome"}
     ]
     search = "awesome"
     actual = @qt.qt(input_terms, s:search)
@@ -98,9 +97,9 @@ class TestMeme < Minitest::Test
       {value: "4", ord: "/building/awesome"}
     ]
     expected = [
-      {value: "1", ord: "/building/awesome"}, 
-      {value: "2", ord: "/building/sucks"}, 
-      {value: "3", ord: "/building/awesome"},
+      {value: 1, ord: "/building/awesome"}, 
+      {value: 2, ord: "/building/sucks"}, 
+      {value: 3, ord: "/building/awesome"},
     ]
     lower = 1
     upper = 3
